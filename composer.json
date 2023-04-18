@@ -1,0 +1,12 @@
+{
+  "name": "slavikgr/328/howdy",
+  "authors": [
+    {
+      "name": "Slavik Khrapach",
+      "email": "hrapachslavik@gmail.com"
+    }
+  ],
+  "require": {
+    "bcosca/fatfree-core": "dev-master"
+  }
+}
