@@ -2,7 +2,7 @@
 /*
  * Slavik Khrapach
  * 4/18/2023
- * 328/howdy/index.php
+ * 328/diner/index.php
  * Controller for howdy project
  *
  */
@@ -26,6 +26,34 @@ $f3->route('GET /', function() {
     // Display view page
     $view = new Template();
     echo $view->render('views/home.html');
+
+});
+
+    $f3->route('GET /breakfast', function() {
+
+        //echo '<h1>Breakfast Menu</h1>';
+
+        // Display view page
+        $view = new Template();
+        echo $view->render('menus/breakfast.html');
+});
+
+$f3->route('GET /lunch', function() {
+
+    //echo '<h1>Breakfast Menu</h1>';
+
+    // Display view page
+    $view = new Template();
+    echo $view->render('menus/lunch.html');
+});
+
+$f3->route('GET /dinner', function() {
+
+    //echo '<h1>Breakfast Menu</h1>';
+
+    // Display view page
+    $view = new Template();
+    echo $view->render('menus/dinner.html');
 });
 
 // Run Fat-Free
