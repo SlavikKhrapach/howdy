@@ -44,7 +44,7 @@ $f3->route('GET /lunch', function() {
 
     // Display view page
     $view = new Template();
-    echo $view->render('menus/lunch.html');
+    echo $view->render('views/menus/lunch.html');
 });
 
 $f3->route('GET /dinner', function() {
@@ -53,7 +53,42 @@ $f3->route('GET /dinner', function() {
 
     // Display view page
     $view = new Template();
-    echo $view->render('menus/dinner.html');
+    echo $view->render('views/menus/dinner.html');
+});
+
+$f3->route('GET|POST /order1', function($f3) {
+
+    // If the form has been posted
+    if ($_SERVER['REQUEST_METHOD'] == "POST")
+        // Get data
+
+        // Validate data
+
+        // Store data in the session array
+
+        // Redirect to order2 route
+        $f3->reroute('order2');
+
+    // Display view page
+    $view = new Template();
+    echo $view->render('views/orderForm1.html');
+});
+
+$f3->route('GET /order2', function() {
+
+
+    // Display view page
+    $view = new Template();
+    echo $view->render('views/orderForm2.html');
+});
+
+$f3->route('GET /summary', function() {
+
+    //echo '<h1>Breakfast Menu</h1>';
+
+    // Display view page
+    $view = new Template();
+    echo $view->render('views/summary.html');
 });
 
 // Run Fat-Free
