@@ -10,3 +10,8 @@ function getMeals() {
     return $meals;
 }
 
+
+function getCondiments() {
+    $condiments = array("ketchup", "mustard", "mayo", "sriracha");
+    return $condiments;
+}

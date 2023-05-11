@@ -14,7 +14,11 @@ error_reporting(E_ALL);
 // Require the autoload file
 require_once('vendor/autoload.php');
 require_once('model/data-layer.php');
-//var_dump(getMeals());
+require_once('model/validation.php');
+
+// Test validation
+
+//if(validMeal())
 
 // Create an F3 (Fat-Free Framework) object
 $f3 = Base::instance();
@@ -66,23 +70,32 @@ $f3->route('GET /happy-hour', function() {
 
 $f3->route('GET|POST /order1', function($f3) {
 
+    $food = "";
+    $meal = "";
+
     // If the form has been posted
     // "Auto-global" arrays: $_SERVER, $_GET, $_POST
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
         // Get data
         // array(2) { ["food"]=> string(5) "chips" ["meal"]=> string(5) "lunch" }
-        //var_dump($_POST);
-        $food = $_POST['food'];
-        $meal = $_POST['meal'];
-        //echo ("Food: $food, Meal: $meal");
+        if (isset($_POST['meal'])) {
+            $food = $_POST['food'];
+        }
+
+        if (isset($_POST['meal'])) {
+            $meal = $_POST['meal'];
+        }
 
         // Validate data
+        if(validMeal($meal)) {
+            $f3->set('SESSION.meal', $meal);
+        } else {
+            $f3->set('errors["meal"]', 'Invalid meal selected');
+        }
 
         // Store data in the session array
         $f3->set('SESSION.food', $food);
-        $f3->set('SESSION.meal', $meal);
-        //$_SESSION['food'] = $food;
 
         // Redirect to order2 route
         $f3->reroute('order2');
@@ -113,6 +126,10 @@ $f3->route('GET|POST /order2', function($f3) {
         // Redirect to the summary route
         $f3->reroute('summary');
     }
+
+    // Get the data from the model and add it to the hive
+    $f3->set('condiments', getCondiments());
+
     // Display view page
     $view = new Template();
     echo $view->render('views/orderForm2.html');
