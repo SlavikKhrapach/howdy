@@ -1,5 +1,5 @@
 {
-  "name": "slavikgr/328/howdy",
+  "name": "slavikgr/328/diner",
   "authors": [
     {
       "name": "Slavik Khrapach",
@@ -8,5 +8,8 @@
   ],
   "require": {
     "bcosca/fatfree-core": "dev-master"
+  },
+  "autoload": {
+    "classmap": ["classes/", "model/"]
   }
 }

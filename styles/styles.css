@@ -9,3 +9,7 @@ h1 {
 body {
     padding: 20px;
 }
+
+.err {
+    color: red;
+}
