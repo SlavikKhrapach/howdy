@@ -15,11 +15,11 @@ class Order
     /**
      * Default constructor for Order
      */
-    function __construct()
+    function __construct($food = "", $meal = "", $condiments = "")
     {
-        $this->_food = "";
-        $this->_meal = "";
-        $this->_condiments = "";
+        $this->_food = $food;
+        $this->_meal = $meal;
+        $this->_condiments = $condiments;
     }
 
     /**
